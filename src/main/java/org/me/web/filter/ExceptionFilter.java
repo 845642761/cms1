@@ -28,6 +28,7 @@ public class ExceptionFilter implements HandlerExceptionResolver {
 		resoult.setCode(-1);
 		if(ex instanceof UnauthorizedException || ex instanceof UnauthenticatedException){
 			resoult.setInfo("暂无权限");
+			mv.setViewName("redirect:/content/themes/error.jsp");
 		}else if(ex instanceof ViewExecption){
 			resoult.setInfo(ex.getMessage());
 		}else if(ex instanceof NoLoginExecption){
@@ -37,7 +38,6 @@ public class ExceptionFilter implements HandlerExceptionResolver {
 			resoult.setInfo("操作失败！");
 		}
 		mv.addObject("error",resoult);
-		ex.printStackTrace();
 		log.error(ex);
         return mv;
 	}

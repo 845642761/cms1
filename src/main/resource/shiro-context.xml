@@ -44,13 +44,13 @@
 		<!-- 用户访问未对其授权的资源时,所显示的连接 -->
 		<!-- 若想更明显的测试此属性可以修改它的值,如unauthor.jsp,然后用户登录后访问/system/main.jsp就看见浏览器会显示unauthor.jsp -->
 		<property name="unauthorizedUrl" value="/error.jsp" />
-		<property name="filters"> 
+		<!-- <property name="filters">
 			<map>
 				<entry key="authc">
 					<ref bean="formAuthenticationFilter"/>
 				</entry>
 			</map>
-		</property>
+		</property> -->
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<!-- 下面value值的第一个'/'代表的路径是相对于HttpServletRequest.getContextPath()的值来的 -->
 		<!--权限控制

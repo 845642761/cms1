@@ -7,6 +7,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.me.core.common.Result;
 import org.me.plugin.paging.io.QueryPagination;
@@ -49,6 +50,7 @@ public class UserController extends BaseController {
 	 * @param user
 	 * @date 2016年8月19日 16:19:31
 	 */
+	@RequiresPermissions("sysuser:query")
 	@RequestMapping("userList")
 	public ModelAndView userList(SystemUser user, QueryPagination queryPagination) {
 		ModelAndView mav = new ModelAndView("/system/user/userList");

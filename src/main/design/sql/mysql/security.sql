@@ -33,7 +33,7 @@ CREATE TABLE `permission`(
 	strName							VARCHAR(32)		NOT NULL			COMMENT "权限名称",
 	strPermission					VARCHAR(100)						COMMENT "权限标识",
 	strDescription					VARCHAR(200)						COMMENT "权限描述",
-	nType							TINYINT			NOT NULL DEFAULT 0	COMMENT "类型:0-菜单,1-按钮",
+	nType							TINYINT			NOT NULL DEFAULT 0	COMMENT "类型:0-菜单,1-按钮,2-其它",
 	nState							TINYINT			NOT NULL DEFAULT 0	COMMENT "状态:0-正常,-1-禁用",
 	dtCreateTime					DATETIME		NOT NULL			COMMENT "创建时间:yyyy-mm-dd HH:mm:ss",
 	PRIMARY KEY(strId),

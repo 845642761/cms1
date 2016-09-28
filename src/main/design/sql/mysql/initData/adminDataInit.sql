@@ -2,9 +2,10 @@ USE cms;
 
 -- 初始化菜单数据
 INSERT INTO `permission` (`strId`, `strPid`, `strName`, `strPermission`, `strDescription`, `nType`, `nState`, `dtCreateTime`) 
-VALUES ('001', '0', '系统管理', NULL, NULL, '0', '0', now()),
-('001-002', '001', '用户管理', '/system/user/list.do', '用户管理', '0', '0', now()),
-('001-001', '001', '部门管理', '/system/department/list.do', '部门管理', '0', '0', now());
+VALUES ('001', '0', '系统管理', "sys:query", '系统管理', '0', '0', now()),
+('001-002', '001', '用户管理', '/system/user/list', '用户管理', '0', '0', now()),
+('001-001', '001', '部门管理', '/system/department/list', '部门管理', '0', '0', now()),
+('001-002-001', '002', '部门用户列表', '/sysuser:query', '部门用户列表', '2', '0', now());
 
 -- 初始化角色数据
 INSERT INTO `role` (`strId`, `strName`, `strDescription`, `nState`) 
@@ -15,6 +16,7 @@ INSERT INTO `rolepermission` (`strId`, `strRoleId`, `strPermissionId`)
 VALUES ('1', '1', '001'),
 ('2', '1', '001-001'),
 ('3', '1', '001-002');
+('4', '1', '001-002-001');
 
 -- 初始化部门数据
 INSERT INTO `department` (`strId`,`strPid`,`strName`,`strDescription`,`nState`,`dtCreateTime`,`nChild`,`strLevel`)

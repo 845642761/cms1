@@ -3,11 +3,18 @@ USE cms;
 -- 初始化菜单数据
 INSERT INTO `permission` (`strId`, `strPid`, `strName`, `strPermission`, `strDescription`, `nType`, `nState`, `dtCreateTime`) 
 VALUES ('001', '0', '系统管理', "sys:query", '系统管理', '0', '0', now()),
-('001-002', '001', '用户管理', '/system/user/list', '用户管理', '0', '0', now()),
+
 ('001-001', '001', '部门管理', '/system/department/list', '部门管理', '0', '0', now()),
+('001-001-001', '001-001', '部门详情查看', 'dept:detail', '部门详情查看', '1', '0', now()),
+('001-001-002', '001-001', '部门添加修改', 'dept:saveOrUpdate', '部门添加修改', '1', '0', now()),
+('001-001-003', '001-001', '部门删除', 'dept:del', '部门删除', '1', '0', now()),
+('001-001-004', '001-001', '部门添加', 'dept:add', '部门添加', '1', '0', now()),
+
+('001-002', '001', '用户管理', '/system/user/list', '用户管理', '0', '0', now()),
 ('001-002-001', '001-002', '部门用户列表', 'sysuser:query', '部门用户列表', '1', '0', now()),
 ('001-002-002', '001-002', '用户详情查看', 'sysuser:detail', '用户详情查看', '1', '0', now()),
 ('001-002-003', '001-003', '用户添加修改', 'sysuser:saveOrUpdate', '用户添加修改', '1', '0', now());
+
 
 -- 初始化角色数据
 INSERT INTO `role` (`strId`, `strName`, `strDescription`, `nState`) 

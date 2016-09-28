@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.me.core.common.Result;
 import org.me.core.common.ResultUtil;
 import org.me.core.exception.ViewExecption;
@@ -26,6 +27,7 @@ public class DepartmentController extends BaseController {
 	@Resource
 	private IDepartmentService departmentService;
 	
+	@RequiresPermissions("/system/department/list")
 	@RequestMapping("list")
 	public ModelAndView list() {
 		return new ModelAndView("/system/department/deptList");
@@ -80,6 +82,7 @@ public class DepartmentController extends BaseController {
 	 * @author: chengbo
 	 * @date: 2016年3月17日 11:43:57
 	 */
+	@RequiresPermissions("dept:detail")
 	@RequestMapping("toDetail")
 	public ModelAndView toDetail(String id) {
 		ModelAndView mav = new ModelAndView("/system/department/deptEdit");
@@ -98,6 +101,7 @@ public class DepartmentController extends BaseController {
 	 * @author: chengbo
 	 * @date: 2016年3月18日 14:25:53
 	 */
+	@RequiresPermissions("dept:saveOrUpdate")
 	@RequestMapping("saveOrUpdate")
 	@ResponseBody
 	public Result saveOrUpdate(Department dept) {
@@ -116,6 +120,7 @@ public class DepartmentController extends BaseController {
 		return resoult;
 	}
 	
+	@RequiresPermissions("dept:del")
 	@RequestMapping("delById")
 	@ResponseBody
 	public Result delById(String id) {
@@ -132,6 +137,7 @@ public class DepartmentController extends BaseController {
 		return resoult;
 	}
 	
+	@RequiresPermissions("dept:add")
 	@RequestMapping("add")
 	public ModelAndView add(String strPid) {
 		ModelAndView mav = new ModelAndView("/system/department/deptAdd");

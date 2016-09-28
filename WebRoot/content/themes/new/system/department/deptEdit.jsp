@@ -17,17 +17,23 @@
 		<input type="hidden" name="strId" value="${department.strId}" />
 		<ul style="text-align: left;margin: 0px; padding: 0px;">
 			<li style="width: 100%; float: left;">
+			<shiro:hasPermission name="dept:add"> 
 				<a class="button" onclick="toAddDept('${department.strId}')">
 					<b>添加子部门</b>
 				</a>
+			</shiro:hasPermission>
+			<shiro:hasPermission name="dept:saveOrUpdate"> 
 				<a class="button" onclick="saveOrUpdate()">
 					<b>保存</b>
 				</a>
+			</shiro:hasPermission>
+			<shiro:hasPermission name="dept:del"> 
 				<c:if test="${!department.strId eq '0'}">
 					<a class="button" onclick="delById('${department.strId}')">
 						<b>删除</b>
 					</a>
 				</c:if>
+			</shiro:hasPermission>
 			</li>
 			<li style="width: 100%; float: left;">
 				部门名称：

@@ -108,6 +108,7 @@ public class UserController extends BaseController {
 	 * @author: chengbo
 	 * @date: 2015年12月14日 20:28:42
 	 */
+	@RequiresPermissions("sysuser:detail")
 	@RequestMapping("toDetail")
 	public ModelAndView toDetail(String strUserId) {
 		ModelAndView mav = new ModelAndView("/system/user/userEdit");
@@ -122,6 +123,7 @@ public class UserController extends BaseController {
 	 * @author cheng_bo
 	 * @date 2015年6月5日 21:38:30
 	 */
+	@RequiresPermissions("sysuser:saveOrUpdate")
 	@RequestMapping("saveOrUpdate")
 	@ResponseBody
 	public Result saveOrUpdate(SystemUser user){

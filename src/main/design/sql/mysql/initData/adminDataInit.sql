@@ -5,7 +5,9 @@ INSERT INTO `permission` (`strId`, `strPid`, `strName`, `strPermission`, `strDes
 VALUES ('001', '0', '系统管理', "sys:query", '系统管理', '0', '0', now()),
 ('001-002', '001', '用户管理', '/system/user/list', '用户管理', '0', '0', now()),
 ('001-001', '001', '部门管理', '/system/department/list', '部门管理', '0', '0', now()),
-('001-002-001', '002', '部门用户列表', '/sysuser:query', '部门用户列表', '2', '0', now());
+('001-002-001', '001-002', '部门用户列表', 'sysuser:query', '部门用户列表', '1', '0', now()),
+('001-002-002', '001-002', '用户详情查看', 'sysuser:detail', '用户详情查看', '1', '0', now()),
+('001-002-003', '001-003', '用户添加修改', 'sysuser:saveOrUpdate', '用户添加修改', '1', '0', now());
 
 -- 初始化角色数据
 INSERT INTO `role` (`strId`, `strName`, `strDescription`, `nState`) 
@@ -15,8 +17,10 @@ VALUES ('1', 'admin', '管理员', '0');
 INSERT INTO `rolepermission` (`strId`, `strRoleId`, `strPermissionId`) 
 VALUES ('1', '1', '001'),
 ('2', '1', '001-001'),
-('3', '1', '001-002');
-('4', '1', '001-002-001');
+('3', '1', '001-002'),
+('4', '1', '001-002-001'),
+('5', '1', '001-002-002'),
+('6', '1', '001-002-003');
 
 -- 初始化部门数据
 INSERT INTO `department` (`strId`,`strPid`,`strName`,`strDescription`,`nState`,`dtCreateTime`,`nChild`,`strLevel`)

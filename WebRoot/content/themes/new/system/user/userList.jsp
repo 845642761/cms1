@@ -48,6 +48,7 @@
 </body>
 <script type="text/javascript" src="<%=basePath%>/plugins/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
+<shiro:hasPermission name="sysuser:detail"> 
 	new parent.parent.ui.tags.AjaxOverlay;
 	var dialog = parent.parent.ui.createDialog('<div>',{
 		title:'用户编辑',
@@ -62,5 +63,6 @@
 			dialog.html(data).dialog('open');
 		});
 	});
+</shiro:hasPermission>
 </script>
 </html>

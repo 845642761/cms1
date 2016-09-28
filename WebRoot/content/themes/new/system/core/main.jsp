@@ -45,7 +45,7 @@
 			</c:forEach>
 		</div>
 		<!-- 右边 -->
-		<div class="main_right" style="height: 500px;">
+		<div class="main_right" style="height: 800px;">
 			<iframe name="iframe" id="iframe" src="<%=basePath %>/system/index" marginWidth="0" marginHeight="0" frameBorder="0" width="100%" height="100%" scrolling="no"></iframe>
 		</div>
 	</div>

@@ -14,7 +14,7 @@
 		<div style="width: 20%; height: 100%; float: left;">
 			<ul id="tree" class="ztree"></ul>
 		</div>
-		<div style="width: 80%; height: 500px; float: left;">
+		<div style="width: 80%; height: 800px; float: left;">
 			<iframe id = "userList" name="right" marginWidth="0" marginHeight="0" frameBorder="0" width="100%" height="100%" scrolling="no"></iframe>
 		</div>
 	</div>

@@ -40,6 +40,7 @@ public class UserController extends BaseController {
 	 * @param lUser
 	 * @date: 2016年8月18日 16:54:56
 	 */
+	@RequiresPermissions("/system/user/list")
 	@RequestMapping("list")
 	public ModelAndView list(SystemUser lUser) {
 		return new ModelAndView("/system/user/list");

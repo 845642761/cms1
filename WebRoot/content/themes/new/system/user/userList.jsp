@@ -55,6 +55,8 @@
 		width:'80%'
 	});
 	
+	$('.toDetail').css('cursor','pointer');
+	
 	/**
 	 * 用户编辑
 	 */

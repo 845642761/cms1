@@ -49,13 +49,14 @@
     			<value>classpath:org/me/web/system/user/dao/*.xml</value>
     			<value>classpath:org/me/web/plugin/shiro/dao/*.xml</value>
     			<value>classpath:org/me/web/system/department/dao/*.xml</value>
+    			<value>classpath:org/me/web/system/category/dao/*.xml</value>
     		</list>
     	</property> 
 	</bean>
 	
 	<!-- 可指定多个包，包与包之间用逗号或分号分隔 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.me.web.system.user.dao,org.me.web.plugin.shiro.dao,org.me.web.system.department.dao" />
+		<property name="basePackage" value="org.me.web.system.user.dao,org.me.web.plugin.shiro.dao,org.me.web.system.department.dao,org.me.web.system.category.dao" />
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="org.me.web.system.article.dao.IArticleDao">
+
+	<insert id="insert" parameterType="org.me.web.system.article.entity.Article">
+		insert into article
+			<trim prefix="(" suffix=")" suffixOverrides="," >
+					<include refid="base_item" />
+			</trim>
+		values
+			<trim prefix="(" suffix=")" suffixOverrides="," >
+					<include refid="base_data" />
+			</trim>
+	</insert>
+	
+	<delete id="delById" parameterType="String">
+		update article set nState = -1 where strId = #{strId}
+	</delete>
+	
+	<select id="getById" parameterType="String" resultType="org.me.web.system.article.entity.Article">
+		select 
+			<include refid="base_select_detail" />
+		from article where strId = #{strId} and nState = 0
+	</select>
+	
+	<update id="update" parameterType="org.me.web.system.article.entity.Article">
+		update article 
+			<set>
+				<include refid="base_set" />
+			</set>
+		where strId = #{strId}
+	</update>
+	
+	<select id="getList" parameterType="org.me.web.system.article.entity.Article" resultType="org.me.web.system.article.entity.Article">
+		select 
+			<include refid="base_select" />
+		from article
+		<where>
+			nState = 0 
+			<include refid="base_where" />
+		</where>
+		<include refid="order" />
+		<include refid="limit" />
+	</select>
+	
+	<select id="getListSize" parameterType="org.me.web.system.article.entity.Article" resultType="Integer">
+		select count(1) from article
+		<where>
+			nState = 0 
+			<include refid="base_where" />
+		</where>
+	</select>
+	
+	<select id="getListByMap" parameterType="Map" resultType="org.me.web.system.article.entity.Article">
+		select 
+			<include refid="base_select" />
+		from article
+		<where>
+			nState = 0 
+			<include refid="base_where" />
+		</where>
+		<include refid="order" />
+		<include refid="limit" />
+	</select>
+	
+	<select id="getListSizeByMap" parameterType="Map" resultType="Integer">
+		select count(1) from article
+		<where>
+			nState = 0 
+			<include refid="base_where" />
+		</where>
+	</select>
+	
+	<sql id="base_select">
+		strId,strTitle,strAuthor,strDescription,nState,dtCreateTime
+	</sql>
+	
+	<sql id="base_select_detail">
+		strId,strCategoryId,strTitle,strAuthor,strDescription,tContent,nState,dtCreateTime
+	</sql>
+	
+	<sql id="base_item">
+		<if test="strId != null">
+			strId,
+		</if>
+		<if test="strCategoryId != null">
+			strCategoryId,
+		</if>
+		<if test="strTitle != null">
+			strTitle,
+		</if>
+		<if test="strAuthor != null">
+			strAuthor,
+		</if>
+		<if test="strDescription != null">
+			strDescription,
+		</if>
+		<if test="tContent != null">
+			tContent,
+		</if>
+		<if test="nState != null">
+			nState,
+		</if>
+		<if test="dtCreateTime != null">
+			dtCreateTime,
+		</if>
+	</sql>
+	
+	<sql id="base_data">
+		<if test="strId != null">
+			#{strId},
+		</if>
+		<if test="strCategoryId != null">
+			#{strCategoryId},
+		</if>
+		<if test="strTitle != null">
+			#{strTitle},
+		</if>
+		<if test="strAuthor != null">
+			#{strAuthor},
+		</if>
+		<if test="strDescription != null">
+			#{strDescription},
+		</if>
+		<if test="tContent != null">
+			#{tContent},
+		</if>
+		<if test="nState != null">
+			#{nState},
+		</if>
+		<if test="dtCreateTime != null">
+			now(),
+		</if>
+	</sql>
+
+	<sql id="base_set">
+		<if test="strCategoryId != null">
+			strCategoryId = #{strCategoryId},
+		</if>
+		<if test="strTitle != null">
+			strTitle = #{strTitle},
+		</if>
+		<if test="strAuthor != null">
+			strAuthor = #{strAuthor},
+		</if>
+		<if test="strDescription != null">
+			strDescription = #{strDescription},
+		</if>
+		<if test="tContent != null">
+			tContent = #{tContent},
+		</if>
+		<if test="nState != null">
+			nState = #{nState},
+		</if>
+	</sql>
+	
+	<sql id="base_where">
+		<if test="strId != null">
+			and strId = #{strId}
+		</if>
+		<if test="strCategoryId != null">
+			and strCategoryId = #{strCategoryId}
+		</if>
+		<if test="strTitle != null">
+			and strTitle like CONCAT('%',#{strTitle},'%')
+		</if>
+		<if test="strAuthor != null">
+			and strAuthor = #{strAuthor}
+		</if>
+		<if test="strDescription != null">
+			and strDescription like CONCAT('%',#{strDescription},'%')
+		</if>
+		<if test="tContent != null">
+			and tContent like CONCAT('%',#{tContent},'%')
+		</if>
+		<if test="nState != null">
+			and nState = #{nState}
+		</if>
+	</sql>
+
+	<sql id="order">
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				 order by #{orderBy}
+			</when>
+			<otherwise>
+				 order by dtCreateTime desc
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<sql id="limit">
+		<if test="startIndex != null and startIndex &gt;= 0 and numPerPage !=null and numPerPage &gt;= 0">
+			 limit #{startIndex},#{numPerPage}
+		</if>
+	</sql>
+</mapper>

@@ -27,7 +27,7 @@ public class DepartmentController extends BaseController {
 	@Resource
 	private IDepartmentService departmentService;
 	
-	@RequiresPermissions("/system/department/list")
+	@RequiresPermissions("dept:query")
 	@RequestMapping("list")
 	public ModelAndView list() {
 		return new ModelAndView("/system/department/deptList");
@@ -38,6 +38,7 @@ public class DepartmentController extends BaseController {
 	 * @author: chengbo
 	 * @date: 2016年3月17日 11:42:59
 	 */
+	@RequiresPermissions("dept:query")
 	@RequestMapping("getDepartmentByPid")
 	@ResponseBody
 	public List<ZtreeDTO> getDepartmentByPid(String id) {
@@ -61,6 +62,7 @@ public class DepartmentController extends BaseController {
 	 * @date: 2016年8月18日 17:06:27
 	 * @return
 	 */
+	@RequiresPermissions("dept:query")
 	@RequestMapping("listDept")
 	@ResponseBody
 	public List<ZtreeDTO> listDept() {

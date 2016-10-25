@@ -2,6 +2,7 @@ package org.me.web.system.article.controller;
 
 import javax.annotation.Resource;
 import org.apache.log4j.Logger;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.me.core.common.Result;
 import org.me.core.common.ResultUtil;
 import org.me.core.exception.ViewExecption;
@@ -23,11 +24,13 @@ public class ArticleController extends BaseController {
 	@Resource
 	private IArticleService articleService;
 	
+	@RequiresPermissions("article:query")
 	@RequestMapping("list")
 	public ModelAndView list() {
 		return new ModelAndView("/system/article/list");
 	}
 	
+	@RequiresPermissions("article:query")
 	@RequestMapping("getListByCategoryId")
 	public ModelAndView getListByCategoryId(String strCategoryId, QueryPagination queryPagination) {
 		ModelAndView mav = new ModelAndView("/system/article/articleList");
@@ -37,6 +40,7 @@ public class ArticleController extends BaseController {
 		return mav;
 	}
 	
+	@RequiresPermissions("article:detail")
 	@RequestMapping("toDetail")
 	public ModelAndView toDetail(String strId) {
 		ModelAndView mav = new ModelAndView("/system/article/articleEdit");
@@ -50,6 +54,7 @@ public class ArticleController extends BaseController {
 		return mav;
 	}
 	
+	@RequiresPermissions("article:saveOrUpdate")
 	@RequestMapping("saveOrUpdate")
 	@ResponseBody
 	public Result saveOrUpdate(Article article) {

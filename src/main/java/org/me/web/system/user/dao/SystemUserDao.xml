@@ -5,14 +5,7 @@
 	
 <mapper namespace="org.me.web.system.user.dao.ISystemUserDao">
 	
-	<select id="getList" parameterType="org.me.web.system.user.entity.SystemUser" resultType="org.me.web.system.user.entity.SystemUser">
-		select
-			<include refid="base_select" />
-		from systemUser where 1=1
-			<include refid="base_where"></include>
-	</select>
-	
-	<select id="getListByMap" parameterType="Map" resultType="org.me.web.system.user.entity.SystemUser">
+	<select id="getList" parameterType="Map" resultType="org.me.web.system.user.entity.SystemUser">
 		select
 			<include refid="base_select" />
 		from systemUser where 1=1
@@ -21,7 +14,7 @@
 			<include refid="limit"></include>
 	</select>
 	
-	<select id="getListSize" parameterType="org.me.web.system.user.entity.SystemUser" resultType="Integer">
+	<select id="getListSize" parameterType="Map" resultType="Integer">
 		select count(1) from systemUser where 1=1
 			<include refid="base_where"></include>
 	</select>

@@ -31,7 +31,8 @@ public class SystemUserService implements ISystemUserService{
 	 */
 	@Override
 	public List<SystemUser> getList(SystemUser user) {
-		return systemUserDao.getList(user);
+		Map<String, Object> map = ObjectUtil.objectToMapIgnoreStatic(user);
+		return systemUserDao.getList(map);
 	}
 	
 	/**
@@ -41,10 +42,10 @@ public class SystemUserService implements ISystemUserService{
 	 */
 	@Override
 	public List<SystemUser> listByDeptId(String deptId) {
-		SystemUser user = new SystemUser();
-		user.setStrDeptId(deptId);
-		user.setnState(1);
-		return systemUserDao.getList(user);
+		Map<String, Object> map = new HashMap<>();
+		map.put("strDeptId", deptId);
+		map.put("nState", 1);
+		return systemUserDao.getList(map);
 	}
 	
 	@Override
@@ -52,7 +53,7 @@ public class SystemUserService implements ISystemUserService{
 		String userId = UuidUtil.getUUID();
 		user.setStrUserId(userId);
 		user.setStrPassword(MD5.toMd5(user.getStrPassword()));
-		systemUserDao.insert(user);
+		//systemUserDao.insert(user);
 		logger.debug("add one systemUser : userId is:" + userId + " &loginName is :" + user.getStrLoginName());
 		return userId;
 	}
@@ -92,11 +93,11 @@ public class SystemUserService implements ISystemUserService{
 		map.putAll(ObjectUtil.objectToMapIgnoreStatic(queryPagination));
 
 		PageList<SystemUser> pageList = new PageList<>();
-		pageList.setList(systemUserDao.getListByMap(map));
+		pageList.setList(systemUserDao.getList(map));
 		Pagination pagination = pageList.getPagination();
 		pagination.setNumPerPage(queryPagination.getNumPerPage());
 		pagination.setStartIndex(queryPagination.getStartIndex());
-		pagination.setTotalRows(systemUserDao.getListSize(user));
+		pagination.setTotalRows(systemUserDao.getListSize(map));
 		return pageList;
 	}
 
@@ -112,11 +113,11 @@ public class SystemUserService implements ISystemUserService{
 		map.put("strDeptId", deptId);
 		map.putAll(ObjectUtil.objectToMapIgnoreStatic(queryPagination));
 		PageList<SystemUser> pageList = new PageList<>();
-		pageList.setList(systemUserDao.getListByMap(map));
+		pageList.setList(systemUserDao.getList(map));
 		Pagination pagination = pageList.getPagination();
 		pagination.setNumPerPage(queryPagination.getNumPerPage());
 		pagination.setStartIndex(queryPagination.getStartIndex());
-		pagination.setTotalRows(systemUserDao.getListSize(user));
+		pagination.setTotalRows(systemUserDao.getListSize(map));
 		return pageList;
 	}
 }

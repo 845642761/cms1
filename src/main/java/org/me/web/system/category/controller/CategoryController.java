@@ -25,7 +25,7 @@ public class CategoryController extends BaseController  {
 	@Resource
 	private ICategoryService categoryService;
 	
-	@RequiresPermissions("/system/category/list")
+	@RequiresPermissions("category:query")
 	@RequestMapping("list")
 	public ModelAndView list() {
 		return new ModelAndView("/system/category/categoryList");
@@ -35,6 +35,7 @@ public class CategoryController extends BaseController  {
 	 * 根据父id获取子节点（加载栏目树）
 	 * @date: 2016年10月10日 16:16:27
 	 */
+	@RequiresPermissions("category:query")
 	@RequestMapping("getCategoryByPid")
 	@ResponseBody
 	public List<ZtreeDTO> getCategoryByPid(String id) {
@@ -57,6 +58,7 @@ public class CategoryController extends BaseController  {
 	 * 栏目列表
 	 * @date: 2016年8月18日 17:06:27
 	 */
+	@RequiresPermissions("category:query")
 	@RequestMapping("listCategory")
 	@ResponseBody
 	public List<ZtreeDTO> listCategory() {

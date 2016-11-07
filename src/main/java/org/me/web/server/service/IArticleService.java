@@ -1,10 +1,10 @@
-package org.me.web.system.article.service;
+package org.me.web.server.service;
 
 import java.util.List;
 
 import org.me.plugin.paging.io.QueryPagination;
 import org.me.plugin.paging.vo.PageList;
-import org.me.web.system.article.entity.Article;
+import org.me.web.server.entity.Article;
 
 public interface IArticleService {
 	public String insert(Article article);

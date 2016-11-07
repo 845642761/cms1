@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="org.me.web.system.article.dao.IArticleDao">
+<mapper namespace="org.me.web.server.dao.IArticleDao">
 
-	<insert id="insert" parameterType="org.me.web.system.article.entity.Article">
+	<insert id="insert" parameterType="org.me.web.server.entity.Article">
 		insert into article
 			<trim prefix="(" suffix=")" suffixOverrides="," >
 					<include refid="base_item" />
@@ -20,13 +20,13 @@
 		update article set nState = -1 where strId = #{strId}
 	</delete>
 	
-	<select id="getById" parameterType="String" resultType="org.me.web.system.article.entity.Article">
+	<select id="getById" parameterType="String" resultType="org.me.web.server.entity.Article">
 		select 
 			<include refid="base_select_detail" />
-		from article where strId = #{strId} and nState = 0
+		from article where strId = #{strId}
 	</select>
 	
-	<update id="update" parameterType="org.me.web.system.article.entity.Article">
+	<update id="update" parameterType="org.me.web.server.entity.Article">
 		update article 
 			<set>
 				<include refid="base_set" />
@@ -34,32 +34,11 @@
 		where strId = #{strId}
 	</update>
 	
-	<select id="getList" parameterType="org.me.web.system.article.entity.Article" resultType="org.me.web.system.article.entity.Article">
+	<select id="getListByMap" parameterType="Map" resultType="org.me.web.server.entity.Article">
 		select 
 			<include refid="base_select" />
 		from article
 		<where>
-			nState = 0 
-			<include refid="base_where" />
-		</where>
-		<include refid="order" />
-		<include refid="limit" />
-	</select>
-	
-	<select id="getListSize" parameterType="org.me.web.system.article.entity.Article" resultType="Integer">
-		select count(1) from article
-		<where>
-			nState = 0 
-			<include refid="base_where" />
-		</where>
-	</select>
-	
-	<select id="getListByMap" parameterType="Map" resultType="org.me.web.system.article.entity.Article">
-		select 
-			<include refid="base_select" />
-		from article
-		<where>
-			nState = 0 
 			<include refid="base_where" />
 		</where>
 		<include refid="order" />
@@ -69,7 +48,6 @@
 	<select id="getListSizeByMap" parameterType="Map" resultType="Integer">
 		select count(1) from article
 		<where>
-			nState = 0 
 			<include refid="base_where" />
 		</where>
 	</select>

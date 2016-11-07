@@ -1,4 +1,4 @@
-package org.me.web.system.article.service.impl;
+package org.me.web.server.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +12,9 @@ import org.me.plugin.paging.io.QueryPagination;
 import org.me.plugin.paging.vo.PageList;
 import org.me.plugin.util.ObjectUtil;
 import org.me.plugin.util.UuidUtil;
-import org.me.web.system.article.dao.IArticleDao;
-import org.me.web.system.article.entity.Article;
-import org.me.web.system.article.service.IArticleService;
+import org.me.web.server.dao.IArticleDao;
+import org.me.web.server.entity.Article;
+import org.me.web.server.service.IArticleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -93,7 +93,7 @@ public class ArticleService implements IArticleService {
 	public List<Article> getList(Article article) {
 		List<Article> list = null;
 		try {
-			list = articleDao.getList(article);
+			list = articleDao.getListByMap(ObjectUtil.objectToMapIgnoreStatic(article));
 		} catch (Exception e) {
 			logger.error("articleService getList error : ", e);
 			throw new ServiceExecption("articleService getList error : ", e);

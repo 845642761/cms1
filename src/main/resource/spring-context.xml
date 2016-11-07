@@ -46,18 +46,19 @@
 		<property name="dataSource" ref="dataSource" />
     	<property name="mapperLocations">
     		<list>
+    			<value>classpath:org/me/web/server/dao/xml/*.xml</value>
+    			
     			<value>classpath:org/me/web/system/user/dao/*.xml</value>
     			<value>classpath:org/me/web/plugin/shiro/dao/*.xml</value>
     			<value>classpath:org/me/web/system/department/dao/*.xml</value>
     			<value>classpath:org/me/web/system/category/dao/*.xml</value>
-    			<value>classpath:org/me/web/system/article/dao/*.xml</value>
     		</list>
     	</property> 
 	</bean>
 	
 	<!-- 可指定多个包，包与包之间用逗号或分号分隔 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.me.web.system.user.dao,org.me.web.plugin.shiro.dao,org.me.web.system.department.dao,org.me.web.system.category.dao,org.me.web.system.article.dao" />
+		<property name="basePackage" value="org.me.web.system.user.dao,org.me.web.plugin.shiro.dao,org.me.web.system.department.dao,org.me.web.system.category.dao,org.me.web.server.dao" />
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

@@ -1,4 +1,4 @@
-package org.me.web.system.category.service.impl;
+package org.me.web.server.service.impl;
 
 import java.util.Date;
 import java.util.List;
@@ -6,10 +6,11 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.me.core.exception.ParamExecption;
 import org.me.core.exception.ServiceExecption;
+import org.me.plugin.util.ObjectUtil;
 import org.me.plugin.util.UuidUtil;
-import org.me.web.system.category.dao.ICategoryDao;
-import org.me.web.system.category.entity.Category;
-import org.me.web.system.category.service.ICategoryService;
+import org.me.web.server.dao.ICategoryDao;
+import org.me.web.server.entity.Category;
+import org.me.web.server.service.ICategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -128,7 +129,7 @@ private Logger log = Logger.getLogger(CategoryService.class);
 	public List<Category> getList(Category category) {
 		List<Category> categorys = null;
 		try {
-			categorys = categoryDao.getList(category);
+			categorys = categoryDao.getListByMap(ObjectUtil.objectToMapIgnoreStatic(category));
 		} catch (Exception e) {
 			log.error("get category error : ", e);
 			throw new ServiceExecption("get category list error");

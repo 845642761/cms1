@@ -1,7 +1,8 @@
-package org.me.web.system.category.service;
+package org.me.web.server.service;
 
 import java.util.List;
-import org.me.web.system.category.entity.Category;
+
+import org.me.web.server.entity.Category;
 
 public interface ICategoryService {
 	public String insert(Category category);

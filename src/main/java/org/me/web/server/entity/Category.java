@@ -1,4 +1,4 @@
-package org.me.web.system.category.entity;
+package org.me.web.server.entity;
 
 import java.util.Date;
 

@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="org.me.web.system.category.dao.ICategoryDao">
+<mapper namespace="org.me.web.server.dao.ICategoryDao">
 
-	<insert id="insert" parameterType="org.me.web.system.category.entity.Category">
+	<insert id="insert" parameterType="org.me.web.server.entity.Category">
 		insert into category
 			<trim prefix="(" suffix=")" suffixOverrides="," >
 					<include refid="base_item" />
@@ -20,13 +20,13 @@
 		update category set nState = -1 where strId = #{strId}
 	</delete>
 	
-	<select id="getById" parameterType="String" resultType="org.me.web.system.category.entity.Category">
+	<select id="getById" parameterType="String" resultType="org.me.web.server.entity.Category">
 		select 
 			<include refid="base_select" />
-		from category where strId = #{strId} and nState = 0
+		from category where strId = #{strId}
 	</select>
 	
-	<update id="update" parameterType="org.me.web.system.category.entity.Category">
+	<update id="update" parameterType="org.me.web.server.entity.Category">
 		update category 
 			<set>
 				<include refid="base_set" />
@@ -34,22 +34,20 @@
 		where strId = #{strId}
 	</update>
 	
-	<select id="getList" parameterType="org.me.web.system.category.entity.Category" resultType="org.me.web.system.category.entity.Category">
+	<select id="getListByMap" parameterType="Map" resultType="org.me.web.server.entity.Category">
 		select 
 			<include refid="base_select" />
 		from category
 		<where>
-			nState = 0 
 			<include refid="base_where" />
 		</where>
 		<include refid="order" />
 		<include refid="limit" />
 	</select>
 	
-	<select id="getListSize" parameterType="org.me.web.system.category.entity.Category" resultType="Integer">
+	<select id="getListSizeByMap" parameterType="Map" resultType="Integer">
 		select count(1) from category
 		<where>
-			nState = 0 
 			<include refid="base_where" />
 		</where>
 	</select>

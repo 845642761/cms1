@@ -1,4 +1,4 @@
-package org.me.web.open.article.controller;
+package org.me.web.open.controller;
 
 import java.util.List;
 import javax.annotation.Resource;

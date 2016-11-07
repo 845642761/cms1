@@ -19,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/system/article/")
-public class ArticleController extends BaseController {
-	private Logger log = Logger.getLogger(ArticleController.class);
+public class SArticleController extends BaseController {
+	private Logger log = Logger.getLogger(SArticleController.class);
 	@Resource
 	private IArticleService articleService;
 	

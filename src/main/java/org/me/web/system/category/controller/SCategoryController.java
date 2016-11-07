@@ -20,8 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/system/category/")
-public class CategoryController extends BaseController  {
-	private Logger log = Logger.getLogger(CategoryController.class);
+public class SCategoryController extends BaseController  {
+	private Logger log = Logger.getLogger(SCategoryController.class);
 	@Resource
 	private ICategoryService categoryService;
 	

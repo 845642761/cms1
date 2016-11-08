@@ -1,4 +1,4 @@
-package org.me.web.system.category.controller;
+package org.me.web.system.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.me.core.common.ResultUtil;
 import org.me.core.exception.ViewExecption;
 import org.me.plugin.ztree.dto.ZtreeDTO;
 import org.me.web.core.common.base.BaseController;
-import org.me.web.system.category.entity.Category;
-import org.me.web.system.category.service.ICategoryService;
+import org.me.web.server.entity.Category;
+import org.me.web.server.service.ICategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;

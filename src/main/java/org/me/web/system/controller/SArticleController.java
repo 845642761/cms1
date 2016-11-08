@@ -1,4 +1,4 @@
-package org.me.web.system.article.controller;
+package org.me.web.system.controller;
 
 import javax.annotation.Resource;
 import org.apache.log4j.Logger;
@@ -9,8 +9,8 @@ import org.me.core.exception.ViewExecption;
 import org.me.plugin.paging.io.QueryPagination;
 import org.me.plugin.paging.vo.PageList;
 import org.me.web.core.common.base.BaseController;
-import org.me.web.system.article.entity.Article;
-import org.me.web.system.article.service.IArticleService;
+import org.me.web.server.entity.Article;
+import org.me.web.server.service.IArticleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;

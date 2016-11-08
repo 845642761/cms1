@@ -17,7 +17,8 @@ public class ThemeFilter implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		if(modelAndView != null){
+		
+		if(request.getRequestURI().contains("/system/") && modelAndView != null){
 			String theme = (String) request.getServletContext().getAttribute("theme");
 			String newViewPath = "";
 			if(StringUtils.hasText(theme)){

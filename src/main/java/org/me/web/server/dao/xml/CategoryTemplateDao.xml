@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="org.me.web.server.dao.ICategoryTemplateDao">
+
+	<insert id="insert" parameterType="org.me.web.server.entity.CategoryTemplate">
+		insert into categoryTemplate
+			<trim prefix="(" suffix=")" suffixOverrides="," >
+					<include refid="base_item" />
+			</trim>
+		values
+			<trim prefix="(" suffix=")" suffixOverrides="," >
+					<include refid="base_data" />
+			</trim>
+	</insert>
+	
+	<select id="getById" parameterType="String" resultType="org.me.web.server.entity.CategoryTemplate">
+		select 
+			<include refid="base_select_detail" />
+		from categoryTemplate where strCategoryId = #{strCategoryId}
+	</select>
+	
+	<update id="update" parameterType="org.me.web.server.entity.CategoryTemplate">
+		update categoryTemplate 
+			<set>
+				<include refid="base_set" />
+			</set>
+		where strCategoryId = #{strCategoryId}
+	</update>
+	
+	<sql id="base_select_detail">
+		strCategoryId,strPageId,strMetaId,strHeadId,strNavId,strFooterId,strInfoPageId,strCssId,nState,dtUpdateTime
+	</sql>
+	
+	<sql id="base_item">
+		<if test="strCategoryId != null">
+			strCategoryId,
+		</if>
+		<if test="strPageId != null">
+			strPageId,
+		</if>
+		<if test="strMetaId != null">
+			strMetaId,
+		</if>
+		<if test="strHeadId != null">
+			strHeadId,
+		</if>
+		<if test="strNavId != null">
+			strNavId,
+		</if>
+		<if test="strFooterId != null">
+			strFooterId,
+		</if>
+		<if test="strInfoPageId != null">
+			strInfoPageId,
+		</if>
+		<if test="strCssId != null">
+			strCssId,
+		</if>
+		<if test="nState != null">
+			nState,
+		</if>
+		<if test="dtUpdateTime != null">
+			dtUpdateTime,
+		</if>
+	</sql>
+	
+	<sql id="base_data">
+		<if test="strCategoryId != null">
+			#{strCategoryId},
+		</if>
+		<if test="strPageId != null">
+			#{strPageId},
+		</if>
+		<if test="strMetaId != null">
+			#{strMetaId},
+		</if>
+		<if test="strHeadId != null">
+			#{strHeadId},
+		</if>
+		<if test="strNavId != null">
+			#{strNavId},
+		</if>
+		<if test="strFooterId != null">
+			#{strFooterId},
+		</if>
+		<if test="strInfoPageId != null">
+			#{strInfoPageId},
+		</if>
+		<if test="strCssId != null">
+			#{strCssId},
+		</if>
+		<if test="nState != null">
+			#{nState},
+		</if>
+		<if test="dtUpdateTime != null">
+			now(),
+		</if>
+	</sql>
+	
+	<sql id="base_set">
+		<if test="strPageId != null">
+			strPageId = #{strPageId},
+		</if>
+		<if test="strMetaId != null">
+			strMetaId = #{strMetaId},
+		</if>
+		<if test="strHeadId != null">
+			strHeadId = #{strHeadId},
+		</if>
+		<if test="strNavId != null">
+			strNavId = #{strNavId},
+		</if>
+		<if test="strFooterId != null">
+			strFooterId = #{strFooterId},
+		</if>
+		<if test="strInfoPageId != null">
+			strInfoPageId = #{strInfoPageId},
+		</if>
+		<if test="strCssId != null">
+			strCssId = #{strCssId},
+		</if>
+		<if test="nState != null">
+			nState = #{nState},
+		</if>
+			dtUpdateTime = now(),
+	</sql>
+</mapper>
